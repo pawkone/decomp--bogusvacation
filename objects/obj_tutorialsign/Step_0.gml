@@ -1,0 +1,1 @@
+showing = distance_to_object(obj_player1) < 160;

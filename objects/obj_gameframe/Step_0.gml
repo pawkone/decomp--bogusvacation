@@ -1,0 +1,38 @@
+gameframe_update();
+
+if (gameframe_mouse_in_window())
+{
+    if (!mouse_in_window)
+    {
+        mouse_in_window = true;
+        gameframe_visible_time = 180;
+        mouseX = window_mouse_get_x();
+        mouseY = window_mouse_get_y();
+    }
+    
+    if (window_mouse_get_x() != mouseX || window_mouse_get_y() != mouseY)
+        mouse_in_window = false;
+}
+else if (mouse_in_window)
+{
+    mouse_in_window = false;
+}
+
+if (gameframe_visible_time > 0)
+{
+    gameframe_visible_time--;
+    global.gameframe_alpha = approach(global.gameframe_alpha, 1, 0.1);
+}
+else
+{
+    global.gameframe_alpha = approach(global.gameframe_alpha, 0, 0.1);
+}
+
+fmod_global_setParameter("mastervol", master, true);
+fmod_global_setParameter("sfxvol", global.SfxVolume, true);
+fmod_global_setParameter("musicvol", global.MusicVolume, true);
+
+if (!window_has_focus() && global.unfocusedmute)
+    master = 0;
+else
+    master = global.MasterVolume;

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_shell_commands",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_shell_commands",
+  "parent":{
+    "name":"Shell",
+    "path":"folders/Extensions/Shell.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
